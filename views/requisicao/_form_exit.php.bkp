@@ -1,0 +1,33 @@
+<?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use yii\jui\DatePicker;
+/* @var $this yii\web\View */
+/* @var $model app\models\Requisicao */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<div class="requisicao-form">
+
+	<?php $form=ActiveForm::begin(); ?>
+	
+	<?= $model->km_saida != null ? $form->field($model, 'executada')->hiddenInput(['value' => 1])->label(false): null ?>
+	
+	<?=$form->field($model, 'anota')->textarea()?>
+
+	<?=$model->isNewRecord ? null : $form->field($model, "hora_saida")->textInput(); ?>
+
+	<?=$model->isNewRecord ? null : $form->field($model, "hora_chegada")->textInput(); ?>
+
+	<?=$model->isNewRecord ? null : $form->field($model, "km_saida")->textInput(); ?>
+
+	<?=$model->isNewRecord ? null : $form->field($model, "km_chegada")->textInput(); ?>
+
+	<div class="form-group">
+		<?=Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
+
+	<?php ActiveForm::end(); ?>
+
+</div>
